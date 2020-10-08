@@ -1,0 +1,421 @@
+#!/bin/bash
+
+if [[ $@ == *--help* ]]; then
+    echo "mkshar v 1.5"
+    echo ""
+    echo "Turns your project into an Eggen-style shar,"
+    echo "because I'm sick of people asking how to do it."
+    echo ""
+    echo "It automatically makes a typescript for your project"
+    echo "demonstating your project running on the given test case."
+    echo ""
+    echo "It also automatically makes the Makefile and p-script"
+    echo -e "\033[33mif they do not exist\033[m and your project is written in C, Java, or Python."
+    echo ""
+    echo "It also brings up a template doc.txt for you to fill in"
+    echo -e "\033[33mif you do not have a documentation file (*doc*) in the project's directory\033[m."
+    echo -e "By default, the doc file will be edited with \033[33mpico\033[m,"
+    echo -e "but you can change this to any editor by modifying the \033[36m\$EDITOR\033[m shell variable."
+    echo ""
+    echo -e "\033[31;1mIt does not turn in the project for you.\033[m"
+    echo "It will tell you the command to turn it in though."
+    echo ""
+    echo "Usage: $0 [directory] [project number] [main executable/class] [testcase] [turnin code]?"
+    echo ""
+    echo "Parameters:"
+    echo ""
+    echo \
+"[directory]
+    The directory containing your project's files.
+
+    All of the files in this directory will be included in the resulting shar,
+    so remove any .class or a.out files from the directory.
+
+    To use the current directory, give '.' as the argument."
+    echo ""
+    echo \
+"[project number]
+    '1' if this is the first project (lexer)
+    '2' if this is the second project (parser)
+    and so on..."
+    echo ""
+    echo \
+"[main executable/class]
+    This argument is only used if you do not already have a p-script.
+
+    For Python projects, this is your main .py file (e.g. 'lexer.py')
+    For Java projects, this is your main **class** (e.g. 'LexerMain')
+    For C projects, this can be whatever you want (e.g. 'a.out')"
+    echo ""
+    echo \
+"[testcase]
+    This is a test file to demonstrate your project with.
+
+    This can either be an absolute path
+    or a path relative to your project's directory."
+    echo ""
+    echo \
+"[turnin code]?
+    This is the turnin code to use with your project (e.g. 'ree4991_1').
+
+    This is only used to determine the due date
+    if your project does not have a doc file.
+
+    If you do not need to determine the due date
+    or you already have a doc file, you do not need to supply this argument.
+
+    Again, this script does not turn in the project for you."
+    echo ""
+    exit 0
+fi
+
+
+if ! [[ -z $1 ]] && [[ -z $4 ]]; then
+    echo "mkshar v 1.5"
+    echo ""
+    echo "Turns your project into an Eggen-style shar,"
+    echo "because I'm sick of people asking how to do it."
+    echo ""
+    echo "Usage: $0 [directory] [project number] [main executable/class] [testcase] [turnin code]?"
+    echo ""
+    echo -e "Type \033[33mmkshar --help\033[m for more complete instructions."
+    echo ""
+    exit 0
+fi
+
+echo "mkshar v1.5 interactive mode"
+echo -e "Use \033[33mmkshar --help\033[m to see the command line arguments for this script."
+echo "Ctrl+C to exit"
+echo ""
+
+flag=""
+
+if ! [[ -z $1 ]]; then
+    directory=$1
+else
+    flag="true"
+    while true; do
+        echo -n "Enter the directory (press enter to use the current directory): "
+        read directory
+        if [[ -z $directory ]]; then
+            directory="."
+        fi
+
+		echo ""
+        if ! ls $directory; then
+            echo "The directory '"$directory"' is invalid"
+            continue
+        else
+			echo ""
+            echo -n "Are these the files in your project (y/n)? "
+            read yn
+            if [[ ${yn:0:1} == "y" ]] || [[ ${yn:0:1} == "Y" ]]; then
+                break
+            else
+                continue
+            fi
+        fi
+    done
+fi
+
+if ! cd $directory; then
+    echo "'$directory' is not a valid directory"
+    exit 1
+fi
+
+if ls $directory | grep '^.*\.c$' >/dev/null 2>&1; then
+	project_lang="c"
+elif ls $directory | grep '^.*\.java$' >/dev/null 2>&1; then
+	project_lang="java"
+elif ls $directory | grep '^.*\.py$' >/dev/null 2>&1; then
+	project_lang="python"
+else
+	project_lang="unknown language"
+fi
+
+echo -e "Detected a project written in \033[33m$project_lang\033[m"
+echo ""
+
+if ! [[ -z $2 ]]; then
+    prjnum=$2
+else
+    flag="true"
+    echo -n "Enter the project number (1 for lexer, 2 for parser, etc.): "
+    read prjnum
+    if [[ -z $prjnum ]] || ! echo $prjnum | egrep '[0-9]' >/dev/null 2>&1; then
+        echo "project number needs to be a single digit, not '"$prjnum"'"
+        exit 1
+    fi
+fi
+
+if ! [[ -z $3 ]]; then
+    main_file=$3
+else
+    flag="true"
+
+	tmp_file=""
+
+	if [[ $project_lang == "python" ]]; then
+		for file in $(ls $directory | grep -v '/'); do
+			if egrep 'sys\.argv' $file >/dev/null 2>&1; then
+				tmp_file=$file
+			fi
+		done
+	fi
+
+	if [[ $project_lang == "java" ]]; then
+		for file in $(ls $directory | grep -v '/'); do
+			if egrep 'public static void main\(String\[\] .*\)' $file >/dev/null 2>&1; then
+				tmp_file=$file
+			fi
+		done
+	fi
+
+	if [[ $project_lang == "c" ]]; then
+		tmp_file="a.out"
+	fi
+
+	if [[ -z $tmp_file ]]; then
+    	echo -n "Enter the main class/file: "
+	else
+		echo -n "Enter the main class/file (enter for '$tmp_file'): "
+	fi
+
+    read main_file
+	if [[ -z $main_file ]] && ! [[ -z $tmp_file ]]; then
+		main_file=$tmp_file
+	fi
+
+    if [[ -z $main_file ]]; then
+        echo "main file cannot be blank. mkshar is not that smart atm"
+        exit 1
+    fi
+fi
+main_file=$(echo $main_file | sed -re 's/(.*)(\.java|\.c)/\1/')
+
+if ! [[ -z $4 ]]; then
+    testcase=$4
+else
+    flag="true"
+
+	tmp_file=""
+
+	for file in $(ls $directory | grep -v '/'); do
+		if echo $file | egrep -i '.*test.*' >/dev/null 2>&1; then
+			tmp_file=$file
+		fi
+	done
+
+	if [[ -z $tmp_file ]]; then
+    	echo -n "Enter a file to test your project with: "
+	else
+		echo -n "Enter a file to test your project with (enter to use '$tmp_file'): "
+	fi
+
+    read testcase
+	if [[ -z $testcase ]] && ! [[ -z $tmp_file ]]; then
+		testcase=$tmp_file
+	fi
+
+    if [[ -z $testcase ]]; then
+        echo "test case cannot be blank."
+        exit 1
+    fi
+fi
+
+if ! ls $testcase >/dev/null 2>&1; then
+    echo "Test case file '$testcase' does not exist"
+    exit 1
+fi
+
+if ! [[ -z $5 ]]; then
+    turnin_code=$5
+else
+    echo -n "Enter the turnin code (or leave it blank. this is only to determine the due date): "
+    read turnin_code
+fi
+
+if ! [[ -z $turnin_code ]]; then
+    if ! turnin -d $turnin_code >/dev/null 2>&1; then
+        echo "$turnin_code is not a valid turnin code"
+        exit 1
+    fi
+
+    duedate=$(turnin -d $turnin_code | sed -re "s/.*$turnin_code:\s*(.*)$/\1/" | xargs -I{} date -d {}'-2 days' "+%m/%d/%y")
+else
+    duedate="[due date]"
+    turnin_code="[turnin code]"
+fi
+
+curdate=$(date "+%m/%d/%y")
+
+if ! [[ -z $flag ]]; then
+    echo -e "directory: \033[33m$directory\033[m"
+    ls $directory
+	echo ""
+    echo -e "project number: \033[33m$prjnum\033[m"
+    echo -e "main file: \033[33m$main_file\033[m"
+    echo -e "test case: \033[33m$testcase\033[m"
+    if ! [[ $duedate == "[due date]" ]]; then
+        echo -e "due date: \033[33m$duedate\033[m"
+    fi
+	echo ""
+    echo -n "Are these correct (y/n)? "
+    read yn
+    if [[ ${yn:0:1} != "y" ]] && [[ ${yn:0:1} != "Y" ]]; then
+        echo "Exiting..."
+        exit 1
+    fi
+fi
+
+
+if ! cd $directory; then
+    echo "$directory is not a valid directory."
+    exit 1
+fi
+
+if ! ls $testcase; then
+    echo "$testcase does not exist in the given directory."
+    exit 1
+fi
+
+if [[ -z $EDITOR ]]; then
+    EDITOR=pico
+fi
+
+if ! ls | grep -i 'doc' >/dev/null 2>&1; then
+    echo "[this is your documentation file. fill it in]
+[your name]
+[class] Project $prjnum
+[name of project]
+Dr. Eggen
+
+Submitted: $curdate
+Due: $duedate
+
+[explain the overall design, explain how to run the program, files created, files consumed, special concerns. this should be at least a good paragraph.]
+" > doc.txt
+    $EDITOR doc.txt
+fi
+
+if ! ls | grep -i 'makefile' > /dev/null 2>&1; then
+    if [[ $project_lang == "c" ]]; then
+        echo "all:
+	gcc -std=c99 *.c -o $main_file" > Makefile
+    elif [[ $project_lang == "java" ]]; then
+        echo "all:
+	javac *.java" > Makefile
+    elif [[ $project_lang == "python" ]]; then
+        echo "all:
+	@echo 'No compilation needed. Project in python.'" > Makefile
+    else
+        echo "mkshar can only generate makefiles for C, Java, and Python. Write your own Makefile and then mkshar again."
+        exit 1
+    fi
+fi
+
+if ! ls p$prjnum >/dev/null 2>&1; then
+    if ls *.c >/dev/null 2>&1; then
+        echo "#!/bin/bash
+./$main_file \$1" > p$prjnum
+    elif ls *.java >/dev/null 2>&1; then
+        echo "#!/bin/bash
+java $main_file \$1" > p$prjnum
+    elif ls *.py >/dev/null 2>&1; then
+        echo "#!/bin/bash
+python3.6 $main_file \$1" > p$prjnum
+    else
+        echo "mkshar can only generate p-scripts for C, Java, and Python. Write your own p-script and then mkshar again."
+        exit 1
+    fi
+fi
+chmod a+x p$prjnum
+
+if ! mkdir test; then
+    echo "Failed to make test directory."
+    exit 1
+fi
+
+if ! shar * > out_fn; then
+    echo "Failed to make initial shar."
+    exit 1
+fi
+
+chmod a+x out_fn
+
+if ! cp out_fn test/ || ! cd test; then
+    echo "CATASTROPHIC FAILURE"
+    exit 1
+fi
+
+echo "******************************* TESTING SHAR *********************************"
+
+if ! unshar out_fn; then
+    echo "Failed to unshar that shit"
+    cd ..
+    rm -r test out_fn
+    exit 1
+fi
+
+if ! make; then
+    echo "makefile didn't work"
+    cd ..
+    rm -r test out_fn
+    exit 1
+fi
+
+if ! cat $testcase; then
+    echo "failed to cat testcase"
+    cd ..
+    rm -r test out_fn
+    exit 1
+fi
+
+if ! ./p$prjnum $testcase; then
+    echo "p-script didn't work"
+    cd ..
+    rm -r test
+    exit 1
+fi
+
+cd ..
+rm -r test/*
+mv out_fn test/
+cd test
+
+echo "******************************* MAKING TYPESCRIPT *********************************"
+script -c "echo -e \"unshar out_fn\nmake\ncat $testcase\n./p$prjnum $testcase\nexit\n\" | /bin/bash --rcfile <(PS1='[\u@\h \W]\$ ') -i"
+if ! mv typescript ..; then
+    echo "Failed to move typescript"
+    exit 1
+fi
+
+cd ..
+rm -r test
+
+if ! shar * > out_fn; then
+    echo "Failed to make final shar"
+    exit 1
+fi
+
+chmod a+x out_fn
+
+clear
+echo -e "\033[32mshar successfully made (called \033[36mout_fn\033[32m).\033[m"
+echo ""
+echo "To check your project's demo run, go to your project's directory and run the following"
+echo ""
+echo "$ cat typescript"
+echo ""
+echo -e "To check the integrity of the shar, go to your project's directory,\033[33m copy the shar to a new directory,\033[m and run the following"
+echo ""
+echo "$ unshar out_fn"
+echo "$ make"
+echo "$ ./p$prjnum $testcase"
+echo ""
+echo "Once you have checked that the shar is okay, go to your project's directory and turn it in with the following"
+echo ""
+echo "$ turnin out_fn $turnin_code"
+echo ""
+echo -e "\033[31;1mThis script has not turned in the project for you.\033[m Use the above command to do so."
+echo ""

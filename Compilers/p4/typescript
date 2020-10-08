@@ -1,0 +1,16 @@
+Script started on Sun 29 Mar 2020 02:06:54 PM EDT
+]0;n01414706@osprey:~/cop4620/p4/tst[?1034h[n01414706@osprey tst]$ sh outfl
+x - created lock directory `_sh13839'.
+x - extracting p4.py (binary)
+x - extracting p4 (text)
+x - extracting makefile (text)
+x - extracting test_fn.txt (binary)
+x - removed lock directory `_sh13839'.
+]0;n01414706@osprey:~/cop4620/p4/tst[n01414706@osprey tst]$ make
+no make file necessary, project in python
+]0;n01414706@osprey:~/cop4620/p4/tst[n01414706@osprey tst]$ ./p4 test_fn.txt
+REJECT
+]0;n01414706@osprey:~/cop4620/p4/tst[n01414706@osprey tst]$ exit
+exit
+
+Script done on Sun 29 Mar 2020 02:07:24 PM EDT

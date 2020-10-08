@@ -1,0 +1,2 @@
+#!/bin/bash
+python3.6 P2_FinnRaae_Compilers.py $1

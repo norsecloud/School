@@ -1,0 +1,5 @@
+ /* bb*/
+ int main(void x)
+ {
+    int x y z ;
+ }

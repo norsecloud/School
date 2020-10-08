@@ -1,0 +1,10 @@
+Semantic Analyzer Project 4
+COP4620 Compilers
+Finn Raae
+Rogger Eggen
+3/29/2020
+4/2/2020
+
+This program checks the semantics of the variables paramenters, and other things
+
+Files created: doc.txt, makefile, p4, p4.py, test_fn.txt, doc.txt

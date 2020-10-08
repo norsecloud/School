@@ -1,0 +1,39 @@
+Script started on Sun 19 Apr 2020 06:08:51 PM EDT
+]0;n01414706@osprey:~/cop4620/p5/tst[?1034h[n01414706@osprey tst]$ sh outfl
+x - created lock directory `_sh30759'.
+x - extracting doc.txt (text)
+x - extracting makefile (text)
+x - extracting p5 (text)
+x - extracting P5_FinnRaae_Compilers.py (binary)
+x - extracting test_fn.txt (binary)
+x - removed lock directory `_sh30759'.
+]0;n01414706@osprey:~/cop4620/p5/tst[n01414706@osprey tst]$ ls
+doc.txt  makefile  outfl  [0m[01;32mp5[0m  P5_FinnRaae_Compilers.py  test_fn.txt  typescript
+[m]0;n01414706@osprey:~/cop4620/p5/tst[n01414706@osprey tst]$ make
+no make file necessary, project in python
+]0;n01414706@osprey:~/cop4620/p5/tst[n01414706@osprey tst]$ ./p5 test_fn.txt
+--------------------------------------------------
+1 		 func 		 main 		 void 		 0
+2 		 alloc 		 4 						 x
+3 		 alloc 		 4 						 y
+4 		 alloc 		 4 						 z
+5 		 alloc 		 4 						 m
+6 		 mult		 3 			 y 		 _t0 bpw = 6
+7 		 add		 x 		 _t0 		 _t1
+8 		 compr		 _t1 			 5 			 _t1
+9 		 brle		 _t1 					 asd   bpo = 9
+10 		 div		 m 		 z 		 _t2
+11 		 add		 y 		 _t2 		 _t3
+12 		 assign 	 _t3 						 x
+13 		 mult		 z 		 m 		 _t4
+14 		 div		 _t4 		 z 		 _t5
+15 		 add		 y 		 _t5 		 _t6
+16 		 sub		 x 		 _t6 		 _t6
+17 		 assign 	 _t6 						 m
+18 		 br									 6
+19 		 end 		 main
+--------------------------------------------------
+]0;n01414706@osprey:~/cop4620/p5/tst[n01414706@osprey tst]$ exit
+exit
+
+Script done on Sun 19 Apr 2020 06:09:24 PM EDT

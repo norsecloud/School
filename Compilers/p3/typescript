@@ -1,0 +1,20 @@
+Script started on Thu 27 Feb 2020 06:55:17 PM EST
+]0;n01414706@osprey:~/cop4620/p3/tst[?1034h[n01414706@osprey tst]$ sh outfl
+x - created lock directory `_sh24266'.
+x - extracting doc.txt (text)
+x - extracting makefile (text)
+x - extracting p3.l (binary)
+x - extracting p3.y (binary)
+x - removed lock directory `_sh24266'.
+]0;n01414706@osprey:~/cop4620/p3/tst[n01414706@osprey tst]$ make
+bison -d p3.y
+cc -c p3.tab.c
+flex p3.l
+cc -c lex.yy.c
+cc -o p3 lex.yy.o p3.tab.o
+]0;n01414706@osprey:~/cop4620/p3/tst[n01414706@osprey tst]$ test.py p3 lex_yacc
+Failed [32m0[m out of [32m39[m cases
+]0;n01414706@osprey:~/cop4620/p3/tst[n01414706@osprey tst]$ exit
+exit
+
+Script done on Thu 27 Feb 2020 06:55:39 PM EST

@@ -1,0 +1,11 @@
+Parser Project 2
+COP4620 Compilers
+Finn Raae
+Rogger Eggen
+2/20/2020
+2/19/2020
+
+The parser opens a .txt reads it and extracts the words puts them in an array and then makes sure they are in the correct order for the c program language. If they are not then then it will print REJECT. If it is in the right order it will print ACCEPT.
+
+Files created: P2_FinnRaae_Compilers.py, makefile, doc.txt, p2, test_fn.txt, typescript
+Files consumed: test_fn.txt

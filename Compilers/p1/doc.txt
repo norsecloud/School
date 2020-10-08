@@ -1,0 +1,15 @@
+Lexical Anaylizer project one
+cop4620 Compilers
+Finn Raae
+Roger Eggen
+1/30/2020
+1/27/2020
+
+Basically my lexical anaylzer opens the .txt then reads it into a variable called lines
+I then run a loop to seperater lines into individual single line. in that loop i run another loop
+that reads each individual char. the char is put into letter then passed into a string. 
+the string is finished when it reaches a specific char (space,  \n, etc) and then depending
+on what the string says it responds accoringly.
+
+files created:	FinnRaae_P1.py,  makefile, doc.txt, p1, test_fn.txt, typescript
+files cosumed:	test_fn.txt

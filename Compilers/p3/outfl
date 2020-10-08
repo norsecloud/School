@@ -1,0 +1,348 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.7).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the `#!/bin/sh' line above, then type `sh FILE'.
+#
+lock_dir=_sh24619
+# Made on 2020-02-27 18:57 EST by <n01414706@osprey.unfcsd.unf.edu>.
+# Source directory was `/home/06/n01414706/cop4620/p3'.
+#
+# Existing files will *not* be overwritten, unless `-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#   1893 -rw-r--r-- p3.l
+#   1612 -rw-r--r-- p3.y
+#    734 -rw-r--r-- typescript
+#    267 -rw-r--r-- doc.txt
+#    198 -rw-r--r-- makefile
+#
+MD5SUM=${MD5SUM-md5sum}
+f=`${MD5SUM} --version | egrep '^md5sum .*(core|text)utils'`
+test -n "${f}" && md5check=true || md5check=false
+${md5check} || \
+  echo 'Note: not verifying md5sums.  Consider installing GNU coreutils.'
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=FAILED
+locale_dir=FAILED
+first_param="$1"
+for dir in $PATH
+do
+  if test "$gettext_dir" = FAILED && test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    case `$dir/gettext --version 2>&1 | sed 1q` in
+      *GNU*) gettext_dir=$dir ;;
+    esac
+  fi
+  if test "$locale_dir" = FAILED && test -f $dir/shar \
+     && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+  then
+    locale_dir=`$dir/shar --print-text-domain-dir`
+  fi
+done
+IFS="$save_IFS"
+if test "$locale_dir" = FAILED || test "$gettext_dir" = FAILED
+then
+  echo=echo
+else
+  TEXTDOMAINDIR=$locale_dir
+  export TEXTDOMAINDIR
+  TEXTDOMAIN=sharutils
+  export TEXTDOMAIN
+  echo="$gettext_dir/gettext -s"
+fi
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null
+then if (echo -n test; echo 1,2,3) | grep n >/dev/null
+     then shar_n= shar_c='
+'
+     else shar_n=-n shar_c= ; fi
+else shar_n= shar_c='\c' ; fi
+f=shar-touch.$$
+st1=200112312359.59
+st2=123123592001.59
+st2tr=123123592001.5 # old SysV 14-char limit
+st3=1231235901
+
+if touch -am -t ${st1} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st1} && test -f ${f}; then
+  shar_touch='touch -am -t $1$2$3$4$5$6.$7 "$8"'
+
+elif touch -am ${st2} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st2} && test ! -f ${st2tr} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$1$2.$7 "$8"'
+
+elif touch -am ${st3} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st3} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$2 "$8"'
+
+else
+  shar_touch=:
+  echo
+  ${echo} 'WARNING: not restoring timestamps.  Consider getting and'
+  ${echo} 'installing GNU `touch'\'', distributed in GNU coreutils...'
+  echo
+fi
+rm -f ${st1} ${st2} ${st2tr} ${st3} ${f}
+#
+if test ! -d ${lock_dir}
+then : ; else ${echo} 'lock directory '${lock_dir}' exists'
+  exit 1
+fi
+if mkdir ${lock_dir}
+then ${echo} 'x - created lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to create lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+# ============= p3.l ==============
+if test -f 'p3.l' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING p3.l (file already exists)'
+else
+${echo} 'x - extracting p3.l (binary)'
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 p3.l
+M)7L-"B-I;F-L=61E(")P,RYT86(N:"(-"B5]#0H-"FYU;6)E<B`@("`@(%LP
+M+3E=#0ID96QI;6ET97(@("!;(%QT70T*=VAI=&5S<&%C92`@>V1E;&EM:71E
+M<GTK#0IL971T97(@("`@("!;02U:82UZ72H-"@T*)24-"GMN=6UB97)]*R`@
+M("`@("`@("`@<F5T=7)N*$Y534)%4BD[#0HB4D5.04U%(B`@("`@("`@("`@
+M(')E='5R;BA214Y!344I.PT*(E=(15)%(B`@("`@("`@("`@("!R971U<FXH
+M5TA%4D4I.PT*#0HB54Y)3TXB("`@("`@("`@("`@(')E='5R;BA53DE/3BD[
+M#0HB24Y415)314-4(B`@("`@("`@(')E='5R;BA)3E1%4E-%0U0I.PT*(DU)
+M3E53(B`@("`@("`@("`@("!R971U<FXH34E.55,I.PT*(E1)3453(B`@("`@
+M("`@("`@("!R971U<FXH5$E-15,I.PT*(DI/24XB("`@("`@("`@("`@("!R
+M971U<FXH2D])3BD[#0HB1$E6241%0EDB("`@("`@("`@(')E='5R;BA$259)
+M1$5"62D[#0H-"B)3(B`@("`@("`@("`@("`@("`@<F5T=7)N*%)%3$%424].
+M*3L-"B)0(B`@("`@("`@("`@("`@("`@<F5T=7)N*%)%3$%424].*3L-"B)3
+M4"(@("`@("`@("`@("`@("`@<F5T=7)N*%)%3$%424].*3L-"B)04D1#5"(@
+M("`@("`@("`@("`@<F5T=7)N*%)%3$%424].*3L-"B)#55-4(B`@("`@("`@
+M("`@("`@<F5T=7)N*%)%3$%424].*3L-"B)/4D1%4E,B("`@("`@("`@("`@
+M<F5T=7)N*%)%3$%424].*3L-"@T*(CTB("`@("`@("`@("`@("`@("!R971U
+M<FXH15$I.PT*(CP^(B`@("`@("`@("`@("`@("!R971U<FXH3D51*3L-"B(\
+M(B`@("`@("`@("`@("`@("`@<F5T=7)N*$Q34RD[#0HB/#TB("`@("`@("`@
+M("`@("`@(')E='5R;BA,15$I.PT*(CXB("`@("`@("`@("`@("`@("!R971U
+M<FXH1U12*3L-"B(^/2(@("`@("`@("`@("`@("`@<F5T=7)N*$=%42D[#0HB
+M*"(@("`@("`@("`@("`@("`@(')E='5R;BA,4$XI.PT*(BDB("`@("`@("`@
+M("`@("`@("!R971U<FXH4E!.*3L-"B);(B`@("`@("`@("`@("`@("`@<F5T
+M=7)N*$Q"4BD[#0HB72(@("`@("`@("`@("`@("`@(')E='5R;BA20E(I.PT*
+M(BPB("`@("`@("`@("`@("`@("!R971U<FXH0T]-*3L-"@T*(D-.3R(@("`@
+M("`@("`@("`@("!R971U<FXH05144DE"551%*3L-"B)#2519(B`@("`@("`@
+M("`@("`@<F5T=7)N*$%45%))0E5412D[#0HB0TY!344B("`@("`@("`@("`@
+M(')E='5R;BA!5%1224)55$4I.PT*(E-.3R(@("`@("`@("`@("`@("!R971U
+M<FXH05144DE"551%*3L-"B)03D\B("`@("`@("`@("`@("`@<F5T=7)N*$%4
+M5%))0E5412D[#0HB5%%462(@("`@("`@("`@("`@(')E='5R;BA!5%1224)5
+M5$4I.PT*(E-.04U%(B`@("`@("`@("`@("!R971U<FXH05144DE"551%*3L-
+M"B)154]402(@("`@("`@("`@("`@<F5T=7)N*$%45%))0E5412D[#0HB4$Y!
+M344B("`@("`@("`@("`@(')E='5R;BA!5%1224)55$4I.PT*(D-/4U0B("`@
+M("`@("`@("`@("!R971U<FXH05144DE"551%*3L-"B)!5E%462(@("`@("`@
+M("`@("`@<F5T=7)N*$%45%))0E5412D[#0HB4R,B("`@("`@("`@("`@("`@
+M(')E='5R;BA!5%1224)55$4I.PT*(E-405154R(@("`@("`@("`@("!R971U
+M<FXH05144DE"551%*3L-"B)0(R(@("`@("`@("`@("`@("`@<F5T=7)N*$%4
+M5%))0E5412D[#0HB0T],3U(B("`@("`@("`@("`@(')E='5R;BA!5%1224)5
+M5$4I.PT*(E=%24=(5"(@("`@("`@("`@("!R971U<FXH05144DE"551%*3L-
+M"B)15%DB("`@("`@("`@("`@("`@<F5T=7)N*$%45%))0E5412D[#0H-"B)!
+M4R(@("`@("`@("`@("`@("`@<F5T=7)N*$%3*3L-"BX@("`@("`@("`@("`@
+M("`@("`@.PT*>VQE='1E<GT@("`@("`@("`@("!R971U<FXH15)23U(I.PT*
+M>W=H:71E<W!A8V5]("`@("`@("`[#0I<;B`@("`@("`@("`@("`@("`@(#L-
+#"B4E
+`
+end
+SHAR_EOF
+  (set 20 20 02 27 18 46 29 'p3.l'; eval "$shar_touch") &&
+  chmod 0644 'p3.l'
+if test $? -ne 0
+then ${echo} 'restore of p3.l failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'p3.l: MD5 check failed'
+       ) << \SHAR_EOF
+41dc2917d2f99337f4c431652db79d5d  p3.l
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'p3.l'` -ne 1893 && \
+  ${echo} 'restoration warning:  size of p3.l is not 1893'
+  fi
+fi
+# ============= p3.y ==============
+if test -f 'p3.y' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING p3.y (file already exists)'
+else
+${echo} 'x - extracting p3.y (binary)'
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 p3.y
+M)7L-"B-I;F-L=61E(#QS=&1I;RYH/@T*(VEN8VQU9&4@/'-T9&QI8BYH/@T*
+M97AT97)N('EY;&5X*"D[#0IE>'1E<FX@>7ET97-T6UT[#0IE>'1E<FX@1DE,
+M12`J>7EI;CL-"B5]#0H-"B5S=&%R="!S=&%R=`T*)71O:V5N($Y534)%4B!2
+M14Y!344@5TA%4D4@54Y)3TX@24Y415)314-4($U)3E53(%1)3453($I/24X@
+M1$E6241%0ED@4D5,051)3TX@15$@3D51($Q34R!,15$@1U12($=%42!,4$X@
+M4E!.($Q"4B!20E(@0T]-($%45%))0E5412!!4R!%4E)/4@T*#0HE)0T*#0IS
+M=&%R="`@("`@("`@("`@("`@("`@("`@("`@("`@(#H@97AP<F5S<VEO;B![
+M?3L-"F5X<')E<W-I;VX@("`@("`@("`@("`@("`@("`@("`@.B!O;F5296QA
+M=&EO;D5X<')E<W-I;VX@>WT@?"!T=V]296QA=&EO;D5X<')E<W-I;VX@>WT[
+M#0IO;F5296QA=&EO;D5X<')E<W-I;VX@("`@("`@("`@(#H@<F5N86UI;F<@
+M>WT@?"!R97-T<FEC=&EO;B![?2!\('!R;VIE8W1I;VYS('M].PT*<F5N86UI
+M;F<@("`@("`@("`@("`@("`@("`@("`@("`Z('1E<FT@4D5.04U%($%45%))
+M0E5412!!4R!!5%1224)55$4@>WT[#0IT97)M("`@("`@("`@("`@("`@("`@
+M("`@("`@("`@(#H@4D5,051)3TX@>WT@?"!,4$X@97AP<F5S<VEO;B!24$X@
+M>WT[#0IR97-T<FEC=&EO;B`@("`@("`@("`@("`@("`@("`@(#H@=&5R;2!7
+M2$5212!C;VUP87)I<V]N('M].PT*<')O:F5C=&EO;G,@("`@("`@("`@("`@
+M("`@("`@("`Z('1E<FT@>WT@?"!T97)M($Q"4B!A='1R:6)U=&5#;VUM84QI
+M<W0@4D)2('M].PT*871T<FEB=71E0V]M;6%,:7-T("`@("`@("`@("`@("`Z
+M($%45%))0E5412![?2!\($%45%))0E5412!#3TT@871T<FEB=71E0V]M;6%,
+M:7-T('M].PT*='=O4F5L871I;VY%>'!R97-S:6]N("`@("`@("`@("`Z('!R
+M;VIE8W1I;VYS(&)I;F%R>4]P97)A=&EO;B!E>'!R97-S:6]N('M].PT*8FEN
+M87)Y3W!E<F%T:6]N("`@("`@("`@("`@("`@("`Z(%5.24].('M]('P@24Y4
+M15)314-4('M]('P@34E.55,@>WT@?"!424U%4R![?7P@2D])3B![?2!\($1)
+M5DE$14)9('M].PT*8V]M<&%R:7-O;B`@("`@("`@("`@("`@("`@("`@("`Z
+M($%45%))0E5412!C;VUP87)E(&YU;6)E<B![?3L-"F-O;7!A<F4@("`@("`@
+M("`@("`@("`@("`@("`@("`@.B!%42![?2!\($Y%42![?2!\($Q34R![?2!\
+M($Q%42![?2!\($=44B![?2!\($=%42![?3L-"FYU;6)E<B`@("`@("`@("`@
+M("`@("`@("`@("`@("`@.B!V86P@>WT@?"!V86P@3E5-0D52('M].PT*=F%L
+M("`@("`@("`@("`@("`@("`@("`@("`@("`@("`Z($Y534)%4B![?0T*#0HE
+M)0T*#0II;G0@;6%I;BAI;G0@87)G8RP@8VAA<B`J87)G=EM=*0T*>PT*("`@
+M>7EI;B`](&9O<&5N*&%R9W9;,5TL(")R(BD[#0H@("!I9B`H(7EY:6XI#0H@
+M("![#0H@("`@("!P<FEN=&8H(FYO(&9I;&5<;B(I.PT*("`@("`@97AI="@P
+M*3L-"B`@('T-"B`@('EY<&%R<V4H*3L-"B`@('!R:6YT9B@B04-#15!4(BD[
+M#0I]#0IY>65R<F]R*"D-"GL-"B`@('!R:6YT9B@B7&Y214I%0U1<;B(I.PT*
+M+R\@("!P<FEN=&8H(F5R<F]R(&9R;VT@>7EE<G)O<EQN(BD[#0H@("!E>&ET
+E*#`I.PT*?0T*>7EW<F%P*"D-"GL-"B`@(')E='5R;B`Q.PT*?0H@
+`
+end
+SHAR_EOF
+  (set 20 20 02 27 18 45 08 'p3.y'; eval "$shar_touch") &&
+  chmod 0644 'p3.y'
+if test $? -ne 0
+then ${echo} 'restore of p3.y failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'p3.y: MD5 check failed'
+       ) << \SHAR_EOF
+ed06c3fe973bed565b61508cad813967  p3.y
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'p3.y'` -ne 1612 && \
+  ${echo} 'restoration warning:  size of p3.y is not 1612'
+  fi
+fi
+# ============= typescript ==============
+if test -f 'typescript' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING typescript (file already exists)'
+else
+${echo} 'x - extracting typescript (binary)'
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 typescript
+M4V-R:7!T('-T87)T960@;VX@5&AU(#(W($9E8B`R,#(P(#`V.C4U.C$W(%!-
+M($535`H;73`[;C`Q-#$T-S`V0&]S<')E>3I^+V-O<#0V,C`O<#,O='-T!QM;
+M/S$P,S1H6VXP,30Q-#<P-D!O<W!R97D@='-T720@<V@@;W5T9FP-"G@@+2!C
+M<F5A=&5D(&QO8VL@9&ER96-T;W)Y(&!?<V@R-#(V-B<N#0IX("T@97AT<F%C
+M=&EN9R!D;V,N='AT("AT97AT*0T*>"`M(&5X=')A8W1I;F<@;6%K969I;&4@
+M*'1E>'0I#0IX("T@97AT<F%C=&EN9R!P,RYL("AB:6YA<GDI#0IX("T@97AT
+M<F%C=&EN9R!P,RYY("AB:6YA<GDI#0IX("T@<F5M;W9E9"!L;V-K(&1I<F5C
+M=&]R>2!@7W-H,C0R-C8G+@T*&UTP.VXP,30Q-#<P-D!O<W!R97DZ?B]C;W`T
+M-C(P+W`S+W1S=`=;;C`Q-#$T-S`V0&]S<')E>2!T<W1=)"!M86ME#0IB:7-O
+M;B`M9"!P,RYY#0IC8R`M8R!P,RYT86(N8PT*9FQE>"!P,RYL#0IC8R`M8R!L
+M97@N>7DN8PT*8V,@+6\@<#,@;&5X+GEY+F\@<#,N=&%B+F\-"AM=,#MN,#$T
+M,30W,#9`;W-P<F5Y.GXO8V]P-#8R,"]P,R]T<W0'6VXP,30Q-#<P-D!O<W!R
+M97D@='-T720@=&5S="YP>2!P,R!L97A?>6%C8PT*1F%I;&5D(!M;,S)M,!M;
+M;2!O=70@;V8@&ULS,FTS.1M;;2!C87-E<PT*&UTP.VXP,30Q-#<P-D!O<W!R
+M97DZ?B]C;W`T-C(P+W`S+W1S=`=;;C`Q-#$T-S`V0&]S<')E>2!T<W1=)"!E
+M>&ET#0IE>&ET#0H*4V-R:7!T(&1O;F4@;VX@5&AU(#(W($9E8B`R,#(P(#`V
+X..C4U.C,Y(%!-($535`IR
+`
+end
+SHAR_EOF
+  (set 20 20 02 27 18 56 06 'typescript'; eval "$shar_touch") &&
+  chmod 0644 'typescript'
+if test $? -ne 0
+then ${echo} 'restore of typescript failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'typescript: MD5 check failed'
+       ) << \SHAR_EOF
+d9ff7cc75651a3034f42a4c751c8fd52  typescript
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'typescript'` -ne 734 && \
+  ${echo} 'restoration warning:  size of typescript is not 734'
+  fi
+fi
+# ============= doc.txt ==============
+if test -f 'doc.txt' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING doc.txt (file already exists)'
+else
+${echo} 'x - extracting doc.txt (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'doc.txt' &&
+Flex and Bison Project 3
+COP4620 Compilers
+Finn Raae
+Rogger Eggen
+2/27/2020
+2/27/2020
+X
+This program is basically a lexical analyzer using flex and a parser using bison
+X
+Files created: doc.txt, makefile, lex.yy.c, lex.yy.o, p3, p3.l, p3.y, p3.tab.c p3.tab.h, p3.tab.o
+SHAR_EOF
+  (set 20 20 02 27 14 57 30 'doc.txt'; eval "$shar_touch") &&
+  chmod 0644 'doc.txt'
+if test $? -ne 0
+then ${echo} 'restore of doc.txt failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'doc.txt: MD5 check failed'
+       ) << \SHAR_EOF
+12d66a5e6866c2faa588bdb16e0d8cdf  doc.txt
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'doc.txt'` -ne 267 && \
+  ${echo} 'restoration warning:  size of doc.txt is not 267'
+  fi
+fi
+# ============= makefile ==============
+if test -f 'makefile' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING makefile (file already exists)'
+else
+${echo} 'x - extracting makefile (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'makefile' &&
+p3: p3.tab.o lex.yy.o
+X	cc -o p3 lex.yy.o p3.tab.o
+X
+p3.tab.o: p3.tab.c
+X	cc -c p3.tab.c
+X
+p3.tab.c: p3.y
+X	bison -d p3.y
+X
+lex.yy.o: lex.yy.c p3.tab.h
+X	cc -c lex.yy.c
+X
+lex.yy.c: p3.l p3.tab.c
+X	flex p3.l
+SHAR_EOF
+  (set 20 20 02 25 22 37 37 'makefile'; eval "$shar_touch") &&
+  chmod 0644 'makefile'
+if test $? -ne 0
+then ${echo} 'restore of makefile failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'makefile: MD5 check failed'
+       ) << \SHAR_EOF
+f87f4c0a201dc9bece4c52437c8cb393  makefile
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'makefile'` -ne 198 && \
+  ${echo} 'restoration warning:  size of makefile is not 198'
+  fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} 'x - removed lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to remove lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+exit 0

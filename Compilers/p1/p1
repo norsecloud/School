@@ -1,0 +1,2 @@
+#!/bin/ksh
+python3.6 FinnRaae_P1.py $1

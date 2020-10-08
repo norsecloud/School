@@ -1,0 +1,86 @@
+Script started on Tue 28 Jan 2020 12:38:09 PM EST
+]0;n01414706@osprey:~/cop4620/tst[?1034h[n01414706@osprey tst]$ sh outfl
+x - created lock directory `_sh18189'.
+x - extracting test_fn.txt (binary)
+x - extracting FinnRaae_P1.py (binary)
+x - extracting makefile (text)
+x - extracting doc.txt (binary)
+x - extracting p1 (binary)
+x - removed lock directory `_sh18189'.
+]0;n01414706@osprey:~/cop4620/tst[n01414706@osprey tst]$ make
+no make file necessary
+]0;n01414706@osprey:~/cop4620/tst[n01414706@osprey tst]$ p1 test_fn.txt 
+bash: p1: command not found
+]0;n01414706@osprey:~/cop4620/tst[n01414706@osprey tst]$ ./p1 test_fn.txt 
+input: /****This**********/
+input: /**************/
+input: /*************************
+input: i = 333;        ******************/       */
+*
+/
+input: iiii = 3@33;
+ID: iiii
+=
+NUM: 3
+ERROR: @33
+;
+input: int g 4 cd (int u, int v)      {
+keyword: int
+ID: g
+INT: 4
+ID: cd
+(
+keyword: int
+ID: u
+,
+keyword: int
+ID: v
+)
+{
+input: if(v == >= 0) return/*a comment*/ u;
+keyword: if
+(
+ID: v
+==
+>=
+INT: 0
+)
+keyword: return
+ID: u
+;
+input: else ret_urn gcd(vxxxxxxvvvvv, u-u/v*v);
+keyword: else
+ID: ret
+ERROR: _urn
+ID: gcd
+(
+ID: vxxxxxxvvvvv
+,
+ID: u
+-
+ID: u
+/
+ID: v
+*
+ID: v
+)
+;
+input: /* u-u/v*v == u mod v*/
+input: !
+!
+input: }
+}
+input: return void while       void main()
+keyword: return
+keyword: void
+keyword: while
+keyword: void
+ID: main
+(
+)
+input: !=
+!=
+]0;n01414706@osprey:~/cop4620/tst[n01414706@osprey tst]$ exit
+exit
+
+Script done on Tue 28 Jan 2020 12:38:55 PM EST

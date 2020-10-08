@@ -1,0 +1,21 @@
+Script started on Wed 19 Feb 2020 12:49:46 PM EST
+]0;n01414706@osprey:~/cop4620/p2/tst[?1034h[n01414706@osprey tst]$ sh outfl
+x - created lock directory `_sh03600'.
+x - extracting doc.txt (binary)
+x - extracting makefile (text)
+x - extracting p2 (text)
+x - extracting P2_FinnRaae_Compilers.py (binary)
+x - extracting test_fn.txt (binary)
+x - removed lock directory `_sh03600'.
+]0;n01414706@osprey:~/cop4620/p2/tst[n01414706@osprey tst]$ make
+no make file necessary, project in python
+]0;n01414706@osprey:~/cop4620/p2/tst[n01414706@osprey tst]$ p2 t
+test_fn.txt  typescript   
+[n01414706@osprey tst]$ p2 test_fn.txt 
+bash: p2: command not found
+]0;n01414706@osprey:~/cop4620/p2/tst[n01414706@osprey tst]$ ./p2 test_fn.txt 
+ACCEPT
+]0;n01414706@osprey:~/cop4620/p2/tst[n01414706@osprey tst]$ exit
+exit
+
+Script done on Wed 19 Feb 2020 12:50:29 PM EST

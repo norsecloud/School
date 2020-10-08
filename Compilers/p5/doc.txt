@@ -1,0 +1,10 @@
+Semantic Analyzer Project 5
+COP4620 Compilers
+Finn Raae
+Rogger Eggen
+4/19/2020
+4/23/2020
+
+This program converts the language into assembly language
+
+Files created: doc.txt, makefile, p5, P5_FinnRaae_Compilers.py, test_fn.txt, doc.txt

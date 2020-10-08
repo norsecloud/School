@@ -1,0 +1,10 @@
+Flex and Bison Project 3
+COP4620 Compilers
+Finn Raae
+Rogger Eggen
+2/27/2020
+2/27/2020
+
+This program is basically a lexical analyzer using flex and a parser using bison
+
+Files created: doc.txt, makefile, lex.yy.c, lex.yy.o, p3, p3.l, p3.y, p3.tab.c p3.tab.h, p3.tab.o
