@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>myMovies Xpress! - Login</title>
+		<link rel="stylesheet" type="text/css" href="../../css/mySite.css">
+		<script src="../script.js"></script>
+	</head>
+	<body>
+		<h1>myMovies Xpress!</h1>
+		<p style="color: red;"><?= $message ?></p>
+<!-- DO NOT REMOVE OR MODIFY THE CODE OR PLACE YOUR CODE ABOVE THIS LINE -->
+
+		<form action="./logon.php" method="post">
+			<label for="Username">Username:</label><br>
+			<input type="text" id="Username" name="Username" required><br>
+
+			<label for="Password">Password:</label><br>
+			<input type="text" id="Password" name="Password" required><br>
+
+			<input type="reset" value="clear">
+			<input type="submit" value="Login" name="Login"/><br><br>
+			<input type="hidden" name="action" value="login" />
+
+			<a href="./logon.php?form=create">Create Account</a>
+			<a href="./logon.php?form=forgot">Forgot Password</a>
+		</form>
+		<p><a href="../index.html">ePoprtfolio</a></p>
+<!-- DO NOT REMOVE OR MODIFY THE CODE OR PLACE YOUR CODE BELOW THIS LINE -->
+	</body>
+</html>

@@ -1,0 +1,104 @@
+/* Add your styles here */
+
+#IndAbout{
+    color: #1919FF;
+}
+#IndHob{
+    color: #FF4D4D;
+}
+#IndEdu{
+    color: #FF33FF;
+}
+div.IndDeg{
+    font-weight: bold;
+}
+div.IndHS{
+    font-style: italic;
+}
+.IndBody a:hover{
+    font-size: 150%;
+}
+#ScBod table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+}
+#tbHD{
+    background-color: #1919FF;
+}
+#tbR1{
+    background-color: #B300B3;
+}
+.radioB input[type="radio"]{
+    background: #1919FF;
+}
+.container{
+    display: flex;
+    height: 100px;
+}
+.chL{
+    float: left;
+    width: 50%
+}
+.chR{
+    float: right;
+}
+.container input[type=checkbox] {
+    margin-right: 5px;
+    cursor: pointer;
+    width: 15px;
+    height: 12px;
+    position: relative;
+}
+
+.container input[type=checkbox]:after {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    top: 0;
+    content: " ";
+    background-color: #ccc;
+    color: #fff;
+    display: inline-block;
+    visibility: visible;
+    padding: 0px 3px;
+    border-radius: 3px;
+}
+
+.container input[type=checkbox]:checked:after {
+    content: "✓";
+    background-color: blue;
+    font-size: 12px;
+}
+
+.radioB input[type=radio] {
+    margin-right: 5px;
+    cursor: pointer;
+    width: 15px;
+    height: 12px;
+    position: relative;
+}
+
+.radioB input[type=radio]:after {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    top: 0;
+    content: " ";
+    background-color: #ccc;
+    color: #fff;
+    display: inline-block;
+    visibility: visible;
+    padding: 0px 3px;
+    border-radius: 3px;
+}
+
+.radioB input[type=radio]:checked:after {
+    background-color: green;
+    font-size: 12px;
+}
+
+#payInfo
+{
+    color: purple;
+}

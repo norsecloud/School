@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>myMovies Xpress! - Cart</title>
+		<link rel="stylesheet" type="text/css" href="../../css/mySite.css">
+		<script src="./script.js"></script>
+	</head>
+	<body>
+		<h3>Welcome, <?= $_SESSION["displayName"] ?> (<a href="javascript: confirmLogout()">logout</a>)</h3>
+		<h1>myMovies Xpress!</h1>
+<!-- DO NOT REMOVE OR MODIFY THE CODE OR PLACE YOUR CODE ABOVE THIS LINE -->
+		<?php if (count($carts) == 0) { ?>
+			<h3>Add some movies to your shopping cart</h3>
+		<?php } else { ?>
+			<h3>There are currently <?php echo count($carts); ?> movies in your shopping cart</h3>
+		<table>
+			<tr>
+				<th>Poster</th>
+				<th>Title(Year)</th>
+				<th>More Info</th>
+				<th>Remove Movie</th>
+			</tr>
+
+			<?php $index = 0;
+				foreach($carts as $movie) {
+				$movieData = getMovieData($movie);
+				$poster = $movieData["Poster"];
+				$title = $movieData["Title"];
+				$year = $movieData["Year"];
+				$movieID = $movieData["ID"];
+				$imdbID = $movieData["IMDB_ID"];
+				$link = "https://www.imdb.com/title/".$imdbID."/";
+				$onclick = 'displayMovieInformation('.$index.')';
+
+			?>
+
+			<tr>
+				<td><img src="<?php echo $poster; ?>" height="100"></td>
+				<td><a href=<?php echo $link; ?>><?php echo $title. ' (' . $year. ')'; ?></a></td>
+				<td><a href="javascript:void(0);" onclick="displayMovieInformation('<?php echo $movieID; ?>');">View More Info</a></td>
+				<td><a href="javascript: confirmRemove('<?php echo $title; ?>', '<?php echo $movieID; ?>')">X</a></td>
+			</tr>
+			<?php $index++; } ?>
+		</table>
+		<?php }?>
+		<input type="button" value="Add Movie" onclick="window.location.href='./search.php'" />
+		<input type="button" value="Checkout" onclick="javascript: confirmCheckout()" />
+
+<!-- DO NOT REMOVE OR MODIFY THE CODE OR PLACE YOUR CODE BELOW THIS LINE -->
+		<!-- This code is used by the movieInfo.php file provided by the professor -->
+		<div id='modalWindow' class='modal'>
+			<div id='modalWindowContent' class='modal-content'>
+			</div>
+		</div>
+	</body>
+</html>
