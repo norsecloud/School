@@ -10,7 +10,7 @@ import java.util.List;
 //FULL. The consumer should “consume” by setting the elements of an array of
 //integers to EMPTY.
 
-public class ProducerConsumer {
+public class ProducerConsumerMultiThread {
 
 	public static void main(String[] args) {
 		//variables

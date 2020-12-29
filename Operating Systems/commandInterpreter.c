@@ -14,7 +14,7 @@
 #include <string.h>
 
 
-int main(void) {
+int commandInterpreter(void) {
   //variables
   char command[100];
   char arg1[100];
